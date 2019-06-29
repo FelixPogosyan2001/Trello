@@ -49,7 +49,7 @@ export class Cards extends React.Component {
     }
     change = () => {
         this.setState({
-            done : !this.state.done
+            done :!this.state.done
         })
     }
     render() {
@@ -74,5 +74,4 @@ export class Cards extends React.Component {
           </div>
          )
     }
-}
 }
