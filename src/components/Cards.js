@@ -1,5 +1,5 @@
 import React from 'react';
-import {List} from './List.js';
+import List from './List.js';
 
 export class Cards extends React.Component {
     constructor(props) {
@@ -7,7 +7,8 @@ export class Cards extends React.Component {
         this.state = {
             add:'',
             content:[],
-            alert : ''
+            alert : '',
+            done : false
         }
         this.ul = React.createRef();
     }
@@ -46,11 +47,15 @@ export class Cards extends React.Component {
     leave = () => {
         this.card.className = 'card border-info';
     }
-
+    change = () => {
+        this.setState({
+            done : !this.state.done
+        })
+    }
     render() {
         var data;
         if (localStorage.getItem(this.props.nickName) && JSON.parse(localStorage.getItem(this.props.nickName)).length!=0) {
-            data = JSON.parse(localStorage.getItem(this.props.nickName)).map((item,i)=> <List key = {i+Math.random()} name = {this.props.nickName} text = {item} />);
+            data = JSON.parse(localStorage.getItem(this.props.nickName)).map((item,i)=> <List key = {i+Math.random()} name = {this.props.nickName} onhandleChange = {this.change} done = {this.state.done} id = {i+item} text = {item} />);
         } else {
             data = '';
         }
@@ -69,4 +74,5 @@ export class Cards extends React.Component {
           </div>
          )
     }
+}
 }
