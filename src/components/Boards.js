@@ -79,7 +79,7 @@ class Boards extends React.Component {
             load : true
         });
 
-        if(this.props.data.length!=0) {
+        if(this.props.data.cards.length!=0) {
             setTimeout(() => {
                 this.props.add(this.state);
             },1000)
@@ -97,14 +97,14 @@ class Boards extends React.Component {
                     description : ''
                 }});
             if(!localStorage.getItem('cards')) {
-                localStorage.setItem('cards',JSON.stringify(this.props.data));
+                localStorage.setItem('cards',JSON.stringify(this.props.data.cards));
                 this.put();
                 this.setState({
                     local:JSON.parse(localStorage.getItem('cards'))
                 });
             } else {
                 var store = JSON.parse(localStorage.getItem('cards'));
-                localStorage.setItem('cards',JSON.stringify([...store,this.props.data[this.props.data.length-1]]));
+                localStorage.setItem('cards',JSON.stringify([...store,this.props.data.cards[this.props.data.cards.length-1]]));
                 this.put();
                 this.setState({
                     local:JSON.parse(localStorage.getItem('cards'))
