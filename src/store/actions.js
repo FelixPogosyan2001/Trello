@@ -4,3 +4,12 @@ export const Add_Data = (data) => {
         payload : data
     }
 }
+export const Change_Color = (props,id) => {
+    return {
+        type : 'Change_Color',
+        payload : {
+            work : props,
+            id : id
+        }
+    }
+}
